@@ -7,7 +7,9 @@ app.use(express.json());
  * CATEGORY NORMALIZATION
  */
 function normalizeCategory(rawCategory = "") {
+  if (typeof rawCategory !== "string") return "GENERIC";
   const c = rawCategory.toLowerCase();
+
 
   if (["filtro", "filtri", "oil", "aria", "abitacolo"].some(k => c.includes(k)))
     return "FILTERS";
